@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3DDora | 3D Artist</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" type="image/png" href="./public/logo.png" />
+    <script>
+        document.documentElement.className = 'js';
+    </script>
+</head>
+
+<body class="loading">
+<main>
+    <header class="frame">
+        <a href="https://www.instagram.com/3d.dora?igsh=MXF4MTNwd285Ynd0Mw%3D%3D&utm_source=qr">
+            <h1 class="frame__title" hidden>3DDora</h1>
+            <img src="./public/logo.png" alt="Logo" class="logo" />
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="grid" id="productGrid"></div>
+    </div>
+
+    <div class="details">
+        <div class="details__title">
+            <p data-title="1" data-text></p>
+            <p data-title="2" data-text></p>
+            <p data-title="3" data-text></p>
+            <p data-title="4" data-text></p>
+            <p data-title="5" data-text></p>
+            <p data-title="6" data-text></p>
+            <p data-title="7" data-text></p>
+        </div>
+        <div class="details__body">
+            <div class="details__thumb"></div>
+            <div class="details__texts">
+                <p data-desc="1" data-text></p>
+                <p data-desc="2" data-text></p>
+                <p data-desc="3" data-text></p>
+                <p data-desc="4" data-text></p>
+                <p data-desc="5" data-text></p>
+                <p data-desc="6" data-text></p>
+                <p data-desc="7" data-text></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cross">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18" stroke="#313131" stroke-width="2" stroke-linecap="round" />
+            <path d="M6 6L18 18" stroke="#313131" stroke-width="2" stroke-linecap="round" />
+        </svg>
+    </div>
+
+    <script src="./js/gsap.js"></script>
+    <script src="./js/Draggable.js"></script>
+    <script src="./js/Flip.js"></script>
+    <script src="./js/SplitText.js"></script>
+    <script src="./js/imagesloaded.pkgd.min.js"></script>
+    <script type="module" src="./js/app.js"></script>
+
+    <script>
+        // Flat list of product IDs
+        const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+        const numColumns = 10; // how many columns you want
+        const cycles = 5;      // how many times to repeat downward
+        const grid = document.getElementById('productGrid');
+
+        // Create columns
+        const columns = [];
+        for (let i = 0; i < numColumns; i++) {
+            const col = document.createElement('div');
+            col.classList.add('column');
+            columns.push(col);
+            grid.appendChild(col);
+        }
+
+        // Helper to place an item in the grid
+        function addProduct(col, id) {
+            const product = document.createElement('div');
+            product.classList.add('product');
+
+            const wrapper = document.createElement('div');
+            wrapper.dataset.id = id;
+
+            const img = document.createElement('img');
+            img.src = `./public/img-${id}.png`;
+
+            wrapper.appendChild(img);
+            product.appendChild(wrapper);
+            col.appendChild(product);
+        }
+
+        // --- Better staggering logic ---
+        for (let c = 0; c < cycles; c++) {
+            for (let i = 0; i < numColumns; i++) {
+                // Instead of a simple +c, multiply by a step size
+                // This spreads duplicates farther apart
+                const offset = i * 2 + c;
+                const id = items[offset % items.length];
+                addProduct(columns[i], id);
+            }
+        }
+    </script>
+
+</main>
+</body>
+</html>
