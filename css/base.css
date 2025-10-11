@@ -200,3 +200,8 @@ a {
     align-items: center;
   }
 }
+
+img {
+  display: block;
+  width: 100%;
+}

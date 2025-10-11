@@ -196,7 +196,7 @@ class Grid {
     this.products.forEach(product => {
       product.addEventListener("click", (e) => {
         e.stopPropagation()
-        // this.showDetails(product)
+        this.showDetails(product)
       })
     })
 
@@ -223,7 +223,7 @@ class Grid {
       ease: "power3.inOut",
     })
 
-    this.flipProduct(product)
+    // this.flipProduct(product)
 
     const title = this.details.querySelector(`[data-title="${product.dataset.id}"]`)
     const text = this.details.querySelector(`[data-desc="${product.dataset.id}"]`)
@@ -305,7 +305,7 @@ class Grid {
 
     const state = Flip.getState(product)
 
-    this.detailsThumb.appendChild(product)
+    // this.detailsThumb.appendChild(product)
 
     Flip.from(state, {
       absolute: true,

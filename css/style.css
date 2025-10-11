@@ -117,8 +117,9 @@
   right: 0;
   width: 50vw;
   height: 100vh;
-  padding: 3vw 4vw;
-  background-color: #f1f1f1;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
 
   transform: translate3d(50vw, 0, 0);
   z-index: 6;
@@ -164,7 +165,7 @@
   height: 100%;
   line-height: 1.5;
   display: grid;
-  max-width: 15rem;
+  /*max-width: 15rem;*/
 
   span {
     display: block;
@@ -192,6 +193,10 @@
     /* position: absolute; */
     bottom: 0;
     left: 0;
+  }
+
+  video {
+    width: 100%;
   }
 }
 
