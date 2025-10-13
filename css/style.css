@@ -154,19 +154,15 @@
 }
 
 .details__body {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-  gap: 2vw;
   height: 100%;
+  width: 100%;
+  padding: 5vw;
 }
 
 .details__texts {
   position: relative;
+  width: 100%;
   height: 100%;
-  line-height: 1.5;
-  display: grid;
-  /*max-width: 15rem;*/
 
   span {
     display: block;
@@ -176,11 +172,9 @@
 
   button {
     appearance: none;
-    border: none;
     display: block;
     background-color: transparent;
     margin-top: 1.5rem;
-    border: 1px solid;
     border-radius: 1rem;
     padding: 0.25rem 1rem;
 
@@ -190,15 +184,22 @@
   }
 
   [data-text] {
-    grid-area: 1 / -1;
+    position: absolute;
+    top: 0;
+    left: 0;
     opacity: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
   }
 
   img,
   video {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -218,7 +219,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
